@@ -7,6 +7,9 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
+#include <cctype>
+#include <cmath>
 
 using namespace std;
 
@@ -28,40 +31,46 @@ bool isNumber(const string& str) {
 }
 
 double useMediana(const vector<int>& grades) {
+    if (grades.empty()) {
+        return 0.0; //Grazinti 0 jei pazymiu sarasas tuscias
+    }
+
     vector<int> sortedGrades = grades;
     sort(sortedGrades.begin(), sortedGrades.end());
     int count = sortedGrades.size();
-    if (count % 2 == 0) {
+    if (count >= 2) {
         return (sortedGrades[count / 2 - 1] + sortedGrades[count / 2]) / 2.0;
-    }
-    else {
-        return sortedGrades[count / 2];
+    } else {
+        return sortedGrades[0]; //Grazinti vieninteli pazymi jei pazymiu sarasas turi viena elementa
     }
 }
 
-void Ivedimas(vector<Studentas>& stud, int n, bool randomNames = false, bool randomGrades = false) {
-    for (int i = 0; i < n; i++) {
-        if (!randomNames) {
-            cout << "Iveskite " << i + 1 << " studento varda ir pavarde: ";
-            cin >> stud[i].vardas >> stud[i].pavarde;
+void Ivedimas(vector<Studentas>& stud, bool randomNames = false, bool randomGrades = false, bool studentCount = false) {
+    bool moreStudents = true;
+    while (moreStudents) {
+        Studentas student;
+
+        if (!randomNames && !studentCount) {
+            cout << "Iveskite studento varda ir pavarde: ";
+            cin >> student.vardas >> student.pavarde;
         }
         else {
             int randIndex = rand() % NUM_NAMES;
-            stud[i].vardas = vardai[randIndex];
-            stud[i].pavarde = pavardes[randIndex];
+            student.vardas = vardai[randIndex];
+            student.pavarde = pavardes[randIndex];
         }
 
         if (randomGrades) {
             int ndCount = rand() % 11;
             for (int j = 0; j < ndCount; j++) {
-                stud[i].nd.push_back(rand() % 11);
+                student.nd.push_back(rand() % 11);
             }
-            stud[i].egzaminas = rand() % 11;
+            student.egzaminas = rand() % 11;
         }
         else {
             string input;
             do {
-                cout << "Kiek pazymiu rezultatu turi " << stud[i].vardas << " " << stud[i].pavarde << " :";
+                cout << "Kiek pazymiu rezultatu turi " << student.vardas << " " << student.pavarde << ": ";
                 cin >> input;
             } while (!isNumber(input));
             int ndCount = stoi(input);
@@ -71,25 +80,32 @@ void Ivedimas(vector<Studentas>& stud, int n, bool randomNames = false, bool ran
                     cout << j + 1 << " balas: ";
                     cin >> input;
                 } while (!(isNumber(input) && stoi(input) >= 0 && stoi(input) <= 10));
-                stud[i].nd.push_back(stoi(input));
+                student.nd.push_back(stoi(input));
             }
 
             do {
-                cout << "Iveskite " << stud[i].vardas << " " << stud[i].pavarde << " egzamino rezultata: ";
+                cout << "Iveskite " << student.vardas << " " << student.pavarde << " egzamino rezultata: ";
                 cin >> input;
             } while (!(isNumber(input) && stoi(input) >= 0 && stoi(input) <= 10));
-            stud[i].egzaminas = stoi(input);
+            student.egzaminas = stoi(input);
         }
+
+        stud.push_back(student);
+
+        char moreChoice;
+        cout << "Ar norite ivesti dar viena studenta? (Y/N): ";
+        cin >> moreChoice;
+        moreStudents = (moreChoice == 'Y' || moreChoice == 'y');
     }
 }
 
 void Spausdinimas(const vector<Studentas>& stud, bool Mediana) {
-    cout << left << setw(15) << "Pavarde" << left << setw(15) << "vardas" << left << setw(15) << "Galutinis " << left << setw(2);
+    cout << left << setw(15) << "Pavarde" << left << setw(15) << "Vardas" << left << setw(15) << "Galutinis ";
     if (Mediana) {
-        cout << "Med.";
+        cout << left << setw(15) << "Med.";
     }
     else {
-        cout << "Vid.";
+        cout << left << setw(15) << "Vid.";
     }
     cout << endl;
     cout << "--------------------------------------------" << endl;
@@ -116,22 +132,15 @@ int main() {
         cout << "1 - Uzpildyti ranka" << endl;
         cout << "2 - Sugeneruoti tik pazymius" << endl;
         cout << "3 - Sugeneruoti pazymius ir vardus" << endl;
-        cout << "4 - Nuskaityti duomenis is failo kursiokai.txt" << endl; // Add an option to read from a file
+        cout << "4 - Nuskaityti duomenis is failo kursiokai.txt" << endl;
         cout << "5 - Baigti programa" << endl;
         cout << " :";
         cin >> choice;
-
+    try{
         switch (stoi(choice)) {
             case 1: {
-                int n;
-                cout << "Iveskite studentu skaiciu: ";
-                cin >> n;
-
-                vector<Studentas> students(n);
-                bool randomNames = false; // For manual input, randomNames is always false
-                bool randomGrades = false; // For manual input, randomGrades is always false
-                Ivedimas(students, n, randomNames, randomGrades);
-
+                vector<Studentas> students;
+                Ivedimas(students, false, false);
                 char calcChoice;
                 cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
                 cin >> calcChoice;
@@ -141,14 +150,8 @@ int main() {
                 break;
             }
             case 2: {
-                int n;
-                cout << "Iveskite studentu skaiciu: ";
-                cin >> n;
-
-                vector<Studentas> students(n);
-                bool randomNames = false; // For random generation, randomNames is always false
-                bool randomGrades = true; // For random generation, randomGrades is always true
-                Ivedimas(students, n, randomNames, randomGrades);
+                vector<Studentas> students;
+                Ivedimas(students, false, true);
 
                 char calcChoice;
                 cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
@@ -159,14 +162,8 @@ int main() {
                 break;
             }
             case 3: {
-                int n;
-                cout << "Iveskite studentu skaiciu: ";
-                cin >> n;
-
-                vector<Studentas> students(n);
-                bool randomNames = true; // For random generation, randomNames is always true
-                bool randomGrades = true; // For random generation, randomGrades is always true
-                Ivedimas(students, n, randomNames, randomGrades);
+                vector<Studentas> students;
+                Ivedimas(students, true, true, true);
 
                 char calcChoice;
                 cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
@@ -177,25 +174,24 @@ int main() {
                 break;
             }
             case 4: {
-                ifstream infile("kursiokai.txt"); // Open file for reading
-                if (!infile) {
+                ifstream fd("kursiokai.txt");
+                if (!fd) {
                     cerr << "Failo nuskaitymo error." << endl;
                     continue;
                 }
-
+                getline(fd, choice);    //praleisti pirmaja eilute
                 vector<Studentas> students;
 
-                // Read data from the file
                 string line;
-                while (getline(infile, line)) {
+                while (getline(fd, line)) {
                     istringstream iss(line);
                     Studentas student;
                     iss >> student.vardas >> student.pavarde;
                     int grade;
                     while (iss >> grade) {
-                        student.nd.push_back(grade);
+                        student.nd.push_back(grade);    
                     }
-                    // Make sure that egzaminas is also read from the file
+                    // Prideti egzamino pazymi
                     if (student.nd.size() > 0) {
                         student.egzaminas = student.nd.back();
                         student.nd.pop_back();
@@ -203,9 +199,8 @@ int main() {
                     students.push_back(student);
                 }
 
-                infile.close(); // Close the file
+                fd.close();
 
-                // Calculate and print results
                 char calcChoice;
                 cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
                 cin >> calcChoice;
@@ -215,19 +210,18 @@ int main() {
                 break;
             }
             case 5: {
-                return 0; // Exit the program
+                return 0;
             }
             default: {
                 cout << "Neteisingas pasirinkimas. Bandykite dar karta." << endl;
                 break;
             }
+            }
+        }catch (const invalid_argument& e) {
+            cout << "Neteisingas pasirinkimas. Bandykite dar karta." << endl;
         }
-
-        cout << endl;
-
         system("pause");
-        system("CLS");
-
+        system("cls");
     } while (true);
 
     return 0;
