@@ -32,7 +32,7 @@ bool isNumber(const string& str) {
 
 double useMediana(const vector<int>& grades) {
     if (grades.empty()) {
-        return 0.0; //Grazinti 0 jei pazymiu sarasas tuscias
+        return 0.0; // Return 0 if the list of grades is empty
     }
 
     vector<int> sortedGrades = grades;
@@ -41,7 +41,7 @@ double useMediana(const vector<int>& grades) {
     if (count >= 2) {
         return (sortedGrades[count / 2 - 1] + sortedGrades[count / 2]) / 2.0;
     } else {
-        return sortedGrades[0]; //Grazinti vieninteli pazymi jei pazymiu sarasas turi viena elementa
+        return sortedGrades[0]; // Return the single grade if there's only one element in the list of grades
     }
 }
 
@@ -110,16 +110,7 @@ void Spausdinimas(const vector<Studentas>& stud, bool Mediana) {
     cout << endl;
     cout << "--------------------------------------------" << endl;
     for (const auto& student : stud) {
-        double galutinis;
-        if (Mediana) {
-            galutinis = useMediana(student.nd);
-        }
-        else {
-            double nd_sum = accumulate(student.nd.begin(), student.nd.end(), 0);
-            double vidurkis = nd_sum / student.nd.size();
-            galutinis = 0.4 * vidurkis + 0.6 * student.egzaminas;
-        }
-        cout << left << setw(15) << student.pavarde << left << setw(15) << student.vardas << left << setw(15) << fixed << setprecision(2) << galutinis << endl;
+        cout << left << setw(15) << student.pavarde << left << setw(15) << student.vardas << left << setw(15) << fixed << setprecision(2) << student.galutinis << endl;
     }
 }
 
@@ -134,9 +125,35 @@ void sortStudents(vector<Studentas>& students, const string& sortBy) {
         });
     } else if (sortBy == "G" || sortBy == "g") {
         sort(students.begin(), students.end(), [](const Studentas& a, const Studentas& b) {
-            return a.galutinis < b.galutinis;
+            return a.galutinis > b.galutinis;
+        });
+    } else {
+        cout<<"Neteisingas rikiavimo pasirinkimas. Vykdomas rikiavimas pagal varda."<<endl;
+        sort(students.begin(), students.end(), [](const Studentas& a, const Studentas& b) {
+            return a.vardas < b.vardas;
         });
     }
+}
+
+void Pasirinkimai(vector<Studentas>& students, char calcChoice)
+{
+    cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
+    cin >> calcChoice;
+    string sortBy;
+    cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G, EGZ): ";
+    cin >> sortBy;
+    bool Mediana = (toupper(calcChoice) == 'M');
+    for (auto& student : students) {
+        if (!Mediana) {
+            double nd_sum = accumulate(student.nd.begin(), student.nd.end(), 0);
+            double vidurkis = nd_sum / student.nd.size();
+            student.galutinis = 0.4 * vidurkis + 0.6 * student.egzaminas;
+        } else {
+            student.galutinis = useMediana(student.nd);
+        }
+    }
+    sortStudents(students, sortBy);
+    Spausdinimas(students, Mediana);
 }
 
 int main() {
@@ -157,15 +174,9 @@ int main() {
             case 1: {
                 vector<Studentas> students;
                 Ivedimas(students, false, false);
+
                 char calcChoice;
-                cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
-                cin >> calcChoice;
-                string sortBy;
-                cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G): ";
-                cin >> sortBy;
-                bool Mediana = (toupper(calcChoice) == 'M');
-                sortStudents(students, sortBy);
-                Spausdinimas(students, Mediana);
+                Pasirinkimai(students, calcChoice);
 
                 break;
             }
@@ -174,14 +185,8 @@ int main() {
                 Ivedimas(students, false, true);
 
                 char calcChoice;
-                cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
-                cin >> calcChoice;
-                string sortBy;
-                cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G): ";
-                cin >> sortBy;
-                bool Mediana = (toupper(calcChoice) == 'M');
-                sortStudents(students, sortBy);
-                Spausdinimas(students, Mediana);
+                Pasirinkimai(students, calcChoice);
+
                 break;
             }
             case 3: {
@@ -189,14 +194,7 @@ int main() {
                 Ivedimas(students, true, true, true);
 
                 char calcChoice;
-                cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
-                cin >> calcChoice;
-                string sortBy;
-                cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G): ";
-                cin >> sortBy;
-                bool Mediana = (toupper(calcChoice) == 'M');
-                sortStudents(students, sortBy);
-                Spausdinimas(students, Mediana);
+                Pasirinkimai(students, calcChoice);
 
                 break;
             }
@@ -229,14 +227,7 @@ int main() {
                 fd.close();
 
                 char calcChoice;
-                cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
-                cin >> calcChoice;
-                bool Mediana = (toupper(calcChoice) == 'M');
-                string sortBy;
-                cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G): ";
-                cin >> sortBy;
-                sortStudents(students, sortBy);
-                Spausdinimas(students, Mediana);
+                Pasirinkimai(students, calcChoice);
 
                 break;
             }
