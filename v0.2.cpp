@@ -123,6 +123,22 @@ void Spausdinimas(const vector<Studentas>& stud, bool Mediana) {
     }
 }
 
+void sortStudents(vector<Studentas>& students, const string& sortBy) {
+    if (sortBy == "V" || sortBy == "v") {
+        sort(students.begin(), students.end(), [](const Studentas& a, const Studentas& b) {
+            return a.vardas < b.vardas;
+        });
+    } else if (sortBy == "P"  || sortBy == "p") {
+        sort(students.begin(), students.end(), [](const Studentas& a, const Studentas& b) {
+            return a.pavarde < b.pavarde;
+        });
+    } else if (sortBy == "G" || sortBy == "g") {
+        sort(students.begin(), students.end(), [](const Studentas& a, const Studentas& b) {
+            return a.galutinis < b.galutinis;
+        });
+    }
+}
+
 int main() {
     srand(time(0));
 
@@ -144,7 +160,11 @@ int main() {
                 char calcChoice;
                 cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
                 cin >> calcChoice;
+                string sortBy;
+                cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G): ";
+                cin >> sortBy;
                 bool Mediana = (toupper(calcChoice) == 'M');
+                sortStudents(students, sortBy);
                 Spausdinimas(students, Mediana);
 
                 break;
@@ -156,9 +176,12 @@ int main() {
                 char calcChoice;
                 cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
                 cin >> calcChoice;
+                string sortBy;
+                cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G): ";
+                cin >> sortBy;
                 bool Mediana = (toupper(calcChoice) == 'M');
+                sortStudents(students, sortBy);
                 Spausdinimas(students, Mediana);
-
                 break;
             }
             case 3: {
@@ -168,7 +191,11 @@ int main() {
                 char calcChoice;
                 cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
                 cin >> calcChoice;
+                string sortBy;
+                cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G): ";
+                cin >> sortBy;
                 bool Mediana = (toupper(calcChoice) == 'M');
+                sortStudents(students, sortBy);
                 Spausdinimas(students, Mediana);
 
                 break;
@@ -205,6 +232,10 @@ int main() {
                 cout << "Pasirinkite skaiciavimo metoda (V - vidurkis, M - mediana): ";
                 cin >> calcChoice;
                 bool Mediana = (toupper(calcChoice) == 'M');
+                string sortBy;
+                cout << "Pasirinkite, kaip norite surusiuoti studentus (V, P, G): ";
+                cin >> sortBy;
+                sortStudents(students, sortBy);
                 Spausdinimas(students, Mediana);
 
                 break;
