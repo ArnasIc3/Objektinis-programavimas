@@ -139,3 +139,90 @@ void Pasirinkimai(vector<Studentas>& students)
     sortStudents(students, sortBy);
     Spausdinimas(students, Mediana);
 }
+
+void Generacija() {
+    for (int fileIndex = 1000; fileIndex <= 1000000; fileIndex *= 10) {
+        // Constructing file name with different index
+        string fileName = ".studentaiGENERATED_" + to_string(fileIndex) + ".txt";
+
+        ofstream fd(fileName);
+        if (!fd) {
+            cerr << "Failo kurimo error." << endl;
+            return;
+        }
+
+        auto start = high_resolution_clock::now();
+
+        fd << "Vardas    Pavarde  ND1  ND2  ND3  ND4  ND5  ND6  ND7  ND8  ND9  ND10  Egzaminas" << endl;
+
+        for (int i = 0; i < fileIndex; i++) {
+            fd << fixed << left << "Vardas" << i + 1 << " Pavarde" << i + 1;
+            cout << setw(15);
+            for (int j = 0; j < 10; j++) {
+                fd << " " << fixed << setw(4) << left << rand() % 11;
+            }
+            fd << " " << rand() % 11 << endl;
+        }
+
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<milliseconds>(stop - start);
+
+
+        fd.flush();
+        cout << "File " << fileName << " created." << "\n Execution time: " << duration.count() / 1000.0 << " seconds." << endl;
+        fd.close();
+
+        // Split students into two files based on their final grade
+        ifstream inputFile(fileName);
+        if (!inputFile) {
+            cerr << "Error opening file: " << fileName << endl;
+            return;
+        }
+
+        ofstream highGradesFile(".galvociai_" + to_string(fileIndex) + ".txt");
+        ofstream lowGradesFile(".nuskriaustukai_" + to_string(fileIndex) + ".txt");
+
+        if (!highGradesFile || !lowGradesFile) {
+            cerr << "Error creating output files." << endl;
+            return;
+        }
+
+        auto start1 = high_resolution_clock::now();
+
+        string line;
+        getline(inputFile, line); // Skip the header line
+        while (getline(inputFile, line)) {
+            istringstream iss(line);
+            Studentas student;
+            iss >> student.vardas >> student.pavarde;
+            int grade;
+            while (iss >> grade) {
+                student.nd.push_back(grade);
+            }
+            if (student.nd.size() > 0) {
+                student.egzaminas = student.nd.back();
+                student.nd.pop_back();
+            }
+            double nd_sum = accumulate(student.nd.begin(), student.nd.end(), 0);
+            double vidurkis = nd_sum / student.nd.size();
+            student.galutinis = 0.4 * vidurkis + 0.6 * student.egzaminas;
+
+            // Write student to appropriate file based on final grade
+            if (student.galutinis >= 5)
+                highGradesFile << line << endl;
+            else
+                lowGradesFile << line << endl;
+        }
+
+        // Close input and output files
+        inputFile.close();
+        highGradesFile.close();
+        lowGradesFile.close();
+
+        auto stop1 = high_resolution_clock::now();
+        auto duration1 = duration_cast<milliseconds>(stop1 - start1);
+
+        cout << " File " << fileIndex << "  sorting execution time : " << duration1.count() / 1000.0 << " seconds." << endl;
+        cout << endl;
+    }
+}

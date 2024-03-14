@@ -13,7 +13,8 @@ void Menu_execute() {
         cout << "2 - Sugeneruoti tik pazymius" << endl;
         cout << "3 - Sugeneruoti pazymius ir vardus" << endl;
         cout << "4 - Nuskaityti duomenis is failo kursiokai.txt" << endl;
-        cout << "5 - Baigti programa" << endl;
+        cout << "5 - Sugeneruoti irasus" << endl;
+        cout << "6 - Baigti programa" << endl;
         cout << " :";
         cin >> choice;
         try {
@@ -68,6 +69,15 @@ void Menu_execute() {
                 break;
             }
             case 5: {
+                int skin;
+                cout << "Ar tikrai norite sugeneruoti naujus irasus? (1 - Taip, any - Ne): ";
+                cin >> skin;
+                if (skin != 1) {
+					break;
+				}
+                Generacija();
+            }
+            case 6: {
                 return;
             }
             default: {
@@ -79,6 +89,8 @@ void Menu_execute() {
         catch (const invalid_argument& e) {
             cout << "Neteisingas pasirinkimas. Bandykite dar karta." << endl;
         }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         system("pause");
         system("cls");
     } while (true);

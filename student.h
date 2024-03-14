@@ -13,8 +13,10 @@
 #include <cstdlib>
 #include <cctype>
 #include <cmath>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 struct Studentas {
     string vardas;
@@ -29,6 +31,7 @@ void Pasirinkimai(vector<Studentas>& students);
 void Spausdinimas(const vector<Studentas>& students, bool Mediana);
 bool isNumber(const string& str);
 double useMediana(const vector<int>& grades);
+void Generacija();
 
 #endif // STUDENT_H
 // Path: v0.3/v0.3.cpp
