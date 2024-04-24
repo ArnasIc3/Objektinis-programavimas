@@ -4,7 +4,7 @@ ISI 1 k., 1-1, Arnas Martinkus
 
 <h2>Project Screenshots:</h2>
 
-<img src="https://postimg.cc/PC6xzw0g" alt="project-screenshot" width="500" height="500/">
+![Screenshot 2024-04-24 202446](https://github.com/ArnasIc3/Objektinis-programavimas/assets/149010264/c41931d3-a27a-45d2-995a-d52612d964e4)
 
 <h2>🛠️ Installation Steps:</h2>
 
