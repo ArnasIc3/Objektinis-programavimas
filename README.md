@@ -3,11 +3,11 @@ ISI 1 k., 1-1, Arnas Martinkus
 ```
 <h1 align="center" id="title">Studentų pažymių skaičiavimas</h1>
 
-<h2>Project Screenshots:</h2>
+<h2>Projekto screenshot:</h2>
 
 ![Screenshot 2024-04-24 202446](https://github.com/ArnasIc3/Objektinis-programavimas/assets/149010264/c41931d3-a27a-45d2-995a-d52612d964e4)
 
-<h2>🛠️ Installation Steps:</h2>
+<h2>🛠️ Setup:</h2>
 
 <p>1. Download VSCode:</p>
 
@@ -67,13 +67,29 @@ C/C++ Extension Pack
 
 <p>5. DONE</p>
 
-<h2>❗DESCRIPTIONS OF ALL RELEASES: </h2>
-<p> v0.1 - </p>
-<p> v0.2 - </p>
-<p> v0.3 - </p>
-<p> v0.4 - </p>
-<p> v1.0 - </p>
-
+<h2>❗Visų release'ų aprašymai: </h2>
+<p> v.pradine - vardų, pavardžių, pažymių ir egzamino įvedimas ranka. 
+  Galutinio vidurkio skaičiavimas formule: 0.4*vidurkis + 0.6*egzaminas.
+  Medianos kaip galutinės išvedimo elemento pasirinkimas.</p>
+<p> v0.1 - veikia su iš anksto nežinomu n skačiumi studentų.
+Sukurti du failai: vienas su C masyvų, kitas naudojant vector container'į.
+Pridėtas atsitiktinių vardų, pavardžių, pažymių generacija.</p>
+<p> v0.2 - skaitymas iš failo kursiokai.txt.
+Rūšiavimas pagal pasirinktą elementą: vardą, pavardę ar galutinį pažymį.
+Atliktas testavimas su iš anksto sugeneruotais failais.</p>
+<p> v0.3 - pataisyta ir tikslingai naudojamas struct.
+Implementuoti header ir cpp failai.
+Išimčių valdymas su try catch funkcija.</p>
+<p> v0.4 - failų generavimas nuo 1000 - 100000 su šabloniniais vardais ir pavardėm.
+Surušiuota studentus į dvi grupes: galvočiai ir nuskriaustukai. Atlikta spartos analizė.
+Pridėtas menu, sumažintas main.cpp failo ilgis. </p>
+<p> v1.0 - realizuota naudojant tris skirtingus konteinerius (trys skirtingi folder'iai).
+Bandyta optimizuoti rūšiavimą ir dvi grupes t.y. galvočiai ir nuskriaustukai.
+Realizuotos 3 strategijos: 
+    1 - orginalioji padalinant į dvi grupes skaitant nuo failo.
+    2 - vargšiukų išrašymas į kitą failą ir kitus paliekant orginaliame faile. 
+    3 - taikant algoritmus pagreitintas veikimas.
+</p>
 Execution time - kiek laiko užtruko sugeneruoti faila x.
 File x sorting execution time - laikas kiek užtruko atidaryti faila ir surušiuoti
 
