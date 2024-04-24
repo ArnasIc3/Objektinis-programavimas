@@ -106,8 +106,9 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ```
 ## Su VECTOR konteineriu:
 ### Vector 1-a strategija: ###
-| Dydis | Sorting | Output |
-| --- | --- | | --- |
+
+|Dydis| Sorting | Output |
+|------| --- | | --- |
 | 1000 | 0.004 | 0.005 | 
 | 10000 | 0.03 | 0.034 | 
 | 100000 | 0.3 | 0.336 | 
@@ -115,6 +116,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 | 10000000 | 34.906 | 33.046 | 
 
 ### Vector 2-a strategija: ###
+
 | Dydis | Sorting | Output |
 | --- | --- | | --- |
 | 1000 | 0.004 | 0.002 | 
@@ -124,6 +126,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 | 10000000 | 30.025 | 16.998 | 
 
 ### Vector 3-a strategija: ###
+
 | Dydis | Read | Sorting | Output |
 | --- | --- | | --- | | --- |
 | 1000 | 0.003 | 0.0000 | 0.007 |
@@ -135,7 +138,9 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 
 
 ## Su LIST konteineriu:
+
 ### List 1-a strategija: ###
+
 | Dydis | Sorting | Output |
 | --- | --- | | --- |
 | 1000 | 0.008 | 0.004 | 
@@ -145,6 +150,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 | 10000000 | 68.091 | 35.743 | 
 
 ### List 2-a strategija: ###
+
 | Dydis | Sorting | Output |
 | --- | --- | | --- |
 | 1000 | 0.003 | 0.002 | 
@@ -154,6 +160,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 | 10000000 | 28.89 | 17.443 | 
 
 ### List 3-a strategija: ###
+
 | Dydis | Read | Sorting | Output |
 | --- | --- | | --- | | --- |
 | 1000 | 0.003 | 0.0000 | 0.001 |
@@ -165,6 +172,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 
 ## Su DEQUE konteineriu:
 ### Deque 1-a strategija: ###
+
 | Dydis | Sorting | Output |
 | --- | --- | | --- |
 | 1000 | 0.009 | 0.005 | 
@@ -174,6 +182,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 | 10000000 | 66.599 | 34.606 | 
 
 ### Deque 2-a strategija: ###
+
 | Dydis | Sorting | Output |
 | --- | --- | | --- |
 | 1000 | 0.003 | 0.002 | 
@@ -183,6 +192,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 | 10000000 | 29.647 | 17.286 | 
 
 ### Deque 3-a strategija: ###
+
 | Dydis | Read | Sorting | Output |
 | --- | --- | | --- | | --- |
 | 1000 | 0.004 | 0.0000 | 0.001 |
