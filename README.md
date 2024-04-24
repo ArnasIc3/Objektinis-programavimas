@@ -66,7 +66,13 @@ C/C++ Extension Pack
 
 <p>5. DONE</p>
 
-<h1> RELEASE DESCRIPTION: </h1>
+<h2>❗DESCRIPTIONS OF ALL RELEASES: </h2>
+<p> v0.1 - </p>
+<p> v0.2 - </p>
+<p> v0.3 - </p>
+<p> v0.4 - </p>
+<p> v1.0 - </p>
+
 Execution time - kiek laiko užtruko sugeneruoti faila x.
 File x sorting execution time - laikas kiek užtruko atidaryti faila ir surušiuoti
 
