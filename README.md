@@ -99,8 +99,8 @@ Sūkurtas CMakelists.txt failas kuris leidžia sukompeliuoti tinkamai kodą per 
 AMD Ryzen 5 5600H 3.30GHz
 ```
 ```
-<bold>16GB 3200MHz </bold>
+16GB 3200MHz
 ```
 ```
-<bold>NVIDIA GeForce RTX 3050 Laptop GPU</bold>
+NVIDIA GeForce RTX 3050 Laptop GPU
 ```
