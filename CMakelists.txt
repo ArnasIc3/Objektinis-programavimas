@@ -1,0 +1,38 @@
+cmake_minimum_required(VERSION 3.16)
+
+project(Pazymiu_skaiciuokle)
+
+set(CMAKE_CXX_STANDARD 17)
+
+# Define the source files
+set(SOURCE_FILES
+    menu.cpp
+    menu.h
+    student.h
+    student.cpp
+)
+
+# Define the directories
+set(DIRECTORIES 1.0_deq 1.0_list 1.0_vect)
+
+# Loop over each directory
+foreach(DIR ${DIRECTORIES})
+    # Add the directory to the include paths
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/${DIR})
+
+    # Define the source files
+    set(SOURCE_FILES
+        ${DIR}/main.cpp
+        ${DIR}/menu.cpp
+        ${DIR}/menu.h
+        ${DIR}/student.h
+        ${DIR}/student.cpp
+    )
+
+    # Create three different executables for this directory
+    add_executable(${DIR}_Pazymiu_skaiciuokle ${SOURCE_FILES})
+
+    # Set the output names for these executables
+    set_target_properties(${DIR}_Pazymiu_skaiciuokle PROPERTIES OUTPUT_NAME "${DIR}_Pazymiu_skaiciuokle")
+   
+endforeach()
