@@ -28,7 +28,7 @@ TDM-GCC 64+32 BIT: https://jmeubank.github.io/tdm-gcc/articles/2021-05/10.3.0-re
 NINJA-BUILD: https://github.com/ninja-build/ninja/releases/v1.12.0
 ```
 
-<p>5. Setup:</p>
+<p>3. Setup:</p>
 
 ```
 Install CMake.exe file. (MAKE SURE TO ADD PATH TO ALL USERS)
@@ -54,7 +54,7 @@ Instalation directory: C:\TDM-GCC-64
 Complete the instalation.
 ```
 
-<p>11. Extensions in VSCode:</p>
+<p>4. Extensions in VSCode:</p>
 
 ```
 CMake Tools
@@ -64,7 +64,7 @@ CMake Tools
 C/C++ Extension Pack
 ```
 
-<p>13. DONE</p>
+<h1>5. DONE</h1>
 
 Execution time - kiek laiko užtruko sugeneruoti faila x.
 File x sorting execution time - laikas kiek užtruko atidaryti faila ir surušiuoti
