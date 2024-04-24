@@ -81,7 +81,7 @@ void Menu_execute() {
                 break;
             }
             case 6: {
-                cout << "Pasirinkite testavimo strategija: 1-a, 2-a: " << endl;
+                cout << "Pasirinkite testavimo strategija 1, 2, 3: " << endl;
                 cout << "Jusu pasirinkimas : ";
                 int Pas;
                 cin >> Pas;
@@ -91,6 +91,9 @@ void Menu_execute() {
                 else if (Pas == 2) {
 					Generacija(2);
 				}
+                else if (Pas == 3) {
+                    Generacija(3);
+                }
                 else {
 					cout << "Neteisingas pasirinkimas. Bandykite dar karta." << endl;
 				}

@@ -141,7 +141,7 @@ void Pasirinkimai(vector<Studentas>& students)
 }
 
 void Generacija(int Pas) {
-    for (int fileIndex = 1000; fileIndex <= 1000000; fileIndex *= 10) {
+    for (int fileIndex = 1000; fileIndex <= 10000000; fileIndex *= 10) {
         // Constructing file name with different index
         string fileName = ".studentaiGENERATED_" + to_string(fileIndex) + ".txt";
         if (Pas == 0)
@@ -193,8 +193,8 @@ void Generacija(int Pas) {
 
         auto startSort = high_resolution_clock::now();
 
-        std::list<Studentas> highGrades;
-        std::list<Studentas> lowGrades;
+        list<Studentas> highGrades;
+        list<Studentas> lowGrades;
 
         string line;
         getline(inputFile, line); // Skip the header line
@@ -248,10 +248,8 @@ void Generacija(int Pas) {
         cout << endl;
 
         }
-        // Seperate students based on their final grade and put the low grade students in a separate file
         if (Pas == 2)
         {
-            // Split students into two files based on their final grade
             ifstream inputFile(fileName);
             if (!inputFile) {
                 cerr << "Error opening file: " << fileName << endl;
@@ -267,7 +265,7 @@ void Generacija(int Pas) {
 
             auto startSort = high_resolution_clock::now();
 
-            std::list<Studentas> lowGrades;
+            list<Studentas> lowGrades;
 
             string line;
             getline(inputFile, line); // Skip the header line
@@ -308,6 +306,75 @@ void Generacija(int Pas) {
 
             cout << " File " << fileIndex << "  sorting execution time : " << durationSort.count() / 1000.0 << " seconds." << endl;
             cout << endl;
+        }
+        if (Pas == 3)
+        {
+            auto startread = high_resolution_clock::now();
+            ifstream inputFile(fileName);
+            if (!inputFile) {
+                cerr << "Error opening file: " << fileName << endl;
+                return;
+            }
+            string line;
+            getline(inputFile, line); // Skip the header line
+            list<Studentas> students; // Declare the students list
+            while (getline(inputFile, line)) {
+                istringstream iss(line);
+                Studentas student;
+                iss >> student.vardas >> student.pavarde;
+                int grade;
+                while (iss >> grade) {
+                    student.nd.push_back(grade);
+                }
+                if (student.nd.size() > 0) {
+                    student.egzaminas = student.nd.back();
+                    student.nd.pop_back();
+                }
+                double nd_sum = accumulate(student.nd.begin(), student.nd.end(), 0);
+                double vidurkis = nd_sum / student.nd.size();
+                student.galutinis = 0.4 * vidurkis + 0.6 * student.egzaminas;
+                students.push_back(student);
+            }       
+
+            auto stopread = high_resolution_clock::now();
+            auto durationread = duration_cast<milliseconds>(stopread - startread);
+            cout << " File " << fileIndex << "  read execution time : " << durationread.count() / 1000.0 << " seconds." << endl;
+
+            auto startSort = high_resolution_clock::now();
+            list<Studentas> highGradeStudents;
+            list<Studentas> lowGradeStudents;
+        
+            for (auto& student : students) {
+                if (student.galutinis >= 5.0) {
+                    highGradeStudents.push_back(student);
+                } else {
+                    lowGradeStudents.push_back(student);
+                }
+            }
+
+            auto stopSort = high_resolution_clock::now();
+            auto durationSort = duration_cast<milliseconds>(stopSort - startSort);
+            cout << " File " << fileIndex << "  sorting execution time : " << durationSort.count() / 1000.0 << " seconds." << endl;
+
+            auto startOutput = high_resolution_clock::now();
+            ofstream highGradesFile(".galvociai_" + to_string(fileIndex) + ".txt");
+            ofstream lowGradesFile(".vargsiukai_" + to_string(fileIndex) + ".txt");
+        
+            // Write high grade students to highGradesFile
+            for (auto& student : highGradeStudents) {
+                highGradesFile << student.vardas.c_str() << " " << student.pavarde.c_str() << " " << student.galutinis << "\n";
+            }
+            
+            // Write low grade students to lowGradesFile
+            for (auto& student : lowGradeStudents) {
+                lowGradesFile << student.vardas.c_str() << " " << student.pavarde.c_str() << " " << student.galutinis << "\n";
+            }
+            highGradesFile.close();
+            lowGradesFile.close();
+
+            auto stopOutput = high_resolution_clock::now();
+            auto durationOutput = duration_cast<milliseconds>(stopOutput - startOutput);
+            cout << " File " << fileIndex << "  output execution time : " << durationOutput.count() / 1000.0 << " seconds." << endl;
         }
     }
 }

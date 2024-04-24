@@ -13,8 +13,8 @@ void Menu_execute() {
         cout << "2 - Sugeneruoti tik pazymius" << endl;
         cout << "3 - Sugeneruoti pazymius ir vardus" << endl;
         cout << "4 - Nuskaityti duomenis is failo kursiokai.txt" << endl;
-        cout << "5 - Sugeneruoti irasus" << endl;
-        cout << "6 - Testavimas su 2 strategijomis" << endl;
+        cout << "5 - Sugeneruoti irasus nuo 1000 - 1000000" << endl;
+        cout << "6 - Testavimas su 3-jomis strategijomis" << endl;
         cout << "7 - Baigti programa" << endl; // "7 - Baigti programa
         cout << " :";
         cin >> choice;
@@ -39,7 +39,7 @@ void Menu_execute() {
                 break;
             }
             case 4: {
-                ifstream fd("studentai10000.txt");
+                ifstream fd("kursiokai.txt");
                 if (!fd) {
                     cerr << "Failo nuskaitymo error." << endl;
                     continue;
@@ -81,7 +81,7 @@ void Menu_execute() {
                 break;
             }
             case 6: {
-                cout << "Pasirinkite testavimo strategija: 1-a, 2-a: " << endl;
+                cout << "Pasirinkite testavimo strategija 1, 2, 3:" << endl;
                 cout << "Jusu pasirinkimas : ";
                 int Pas;
                 cin >> Pas;
@@ -91,6 +91,9 @@ void Menu_execute() {
                 else if (Pas == 2) {
 					Generacija(2);
 				}
+                else if (Pas == 3){
+                    Generacija(3);
+                }
                 else {
 					cout << "Neteisingas pasirinkimas. Bandykite dar karta." << endl;
 				}
