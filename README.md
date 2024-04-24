@@ -108,7 +108,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### Vector 1-a strategija: ###
 
 |Dydis|Sorting|Output|
-|---|---||---|
+|---|---|---|
 |1000|0.004|0.005| 
 |10000|0.03|0.034| 
 |100000|0.3|0.336| 
@@ -118,7 +118,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### Vector 2-a strategija: ###
 
 | Dydis | Sorting | Output |
-| --- | --- | | --- |
+| --- | --- | --- |
 | 1000 | 0.004 | 0.002 | 
 | 10000 | 0.029 | 0.017 | 
 | 100000 | 0.282 | 0.282 | 
@@ -128,7 +128,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### Vector 3-a strategija: ###
 
 | Dydis | Read | Sorting | Output |
-| --- | --- | | --- | | --- |
+| --- | --- | --- | --- |
 | 1000 | 0.003 | 0.0000 | 0.007 |
 | 10000 | 0.04 | 0.012 | 0.3 |
 | 100000 | 0.3 | 0.095 | 3.211 |
@@ -142,7 +142,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### List 1-a strategija: ###
 
 | Dydis | Sorting | Output |
-| --- | --- | | --- |
+| --- | --- | --- |
 | 1000 | 0.008 | 0.004 | 
 | 10000 | 0.046 | 0.034 | 
 | 100000 | 0.677 | 0.378 | 
@@ -152,7 +152,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### List 2-a strategija: ###
 
 | Dydis | Sorting | Output |
-| --- | --- | | --- |
+| --- | --- |  --- |
 | 1000 | 0.003 | 0.002 | 
 | 10000 | 0.033 | 0.017 | 
 | 100000 | 0.294 | 0.17 | 
@@ -162,7 +162,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### List 3-a strategija: ###
 
 | Dydis | Read | Sorting | Output |
-| --- | --- | | --- | | --- |
+| --- | --- |  ---  | --- |
 | 1000 | 0.003 | 0.0000 | 0.001 |
 | 10000 | 0.03 | 0.004 | 0.01 |
 | 100000 | 0.297 | 0.034 | 0.095 |
@@ -174,7 +174,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### Deque 1-a strategija: ###
 
 | Dydis | Sorting | Output |
-| --- | --- | | --- |
+| --- | --- |  --- |
 | 1000 | 0.009 | 0.005 | 
 | 10000 | 0.066 | 0.034 | 
 | 100000 | 0.656 | 0.344 | 
@@ -184,7 +184,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### Deque 2-a strategija: ###
 
 | Dydis | Sorting | Output |
-| --- | --- | | --- |
+| --- | --- | --- |
 | 1000 | 0.003 | 0.002 | 
 | 10000 | 0.032 | 0.017 | 
 | 100000 | 0.285 | 0.174 | 
@@ -194,7 +194,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### Deque 3-a strategija: ###
 
 | Dydis | Read | Sorting | Output |
-| --- | --- | | --- | | --- |
+| --- | --- |  ---  | --- |
 | 1000 | 0.004 | 0.0000 | 0.001 |
 | 10000 | 0.032 | 0.001 | 0.01 |
 | 100000 | 0.305 | 0.029 | 0.107 |
