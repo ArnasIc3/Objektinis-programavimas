@@ -108,7 +108,7 @@ NVIDIA GeForce RTX 3050 Laptop GPU
 ### Vector 1-a strategija: ###
 
 |Dydis| Sorting | Output |
-|------| --- | | --- |
+|---|---| |---|
 | 1000 | 0.004 | 0.005 | 
 | 10000 | 0.03 | 0.034 | 
 | 100000 | 0.3 | 0.336 | 
