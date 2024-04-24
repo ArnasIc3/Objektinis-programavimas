@@ -89,6 +89,7 @@ Realizuotos 3 strategijos:
     1 - orginalioji padalinant į dvi grupes skaitant nuo failo.
     2 - vargšiukų išrašymas į kitą failą ir kitus paliekant orginaliame faile. 
     3 - taikant algoritmus pagreitintas veikimas.
+Sūkurtas CMakelists.txt failas kuris leidžia sukompeliuoti tinkamai kodą per VSCode ir buvo pereita prie šio IDE.
 </p>
 Execution time - kiek laiko užtruko sugeneruoti faila x.
 File x sorting execution time - laikas kiek užtruko atidaryti faila ir surušiuoti
