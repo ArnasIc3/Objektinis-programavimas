@@ -64,8 +64,9 @@ CMake Tools
 C/C++ Extension Pack
 ```
 
-<h1>5. DONE</h1>
+<p>5. DONE</p>
 
+<h1> RELEASE DESCRIPTION: </h1>
 Execution time - kiek laiko užtruko sugeneruoti faila x.
 File x sorting execution time - laikas kiek užtruko atidaryti faila ir surušiuoti
 
