@@ -94,7 +94,7 @@ Sūkurtas CMakelists.txt failas kuris leidžia sukompeliuoti tinkamai kodą per 
 
 <h2>💣 1.0 TESTAVIMAI: </h2>
 <p>Testavimai atliekami ant:</p>
-<bold>AMD Ryzen 5 5600H 3.30GHz
-16GB 3200MHz
-NVIDIA GeForce RTX 3050 Laptop GPU</bold>
+<bold>AMD Ryzen 5 5600H 3.30GHz</bold>
+<bold>16GB 3200MHz </bold>
+<bold>NVIDIA GeForce RTX 3050 Laptop GPU</bold>
 
