@@ -1,5 +1,70 @@
 # Objektinis-programavimas
 ISI 1 k., 1-1, Arnas Martinkus
+<h1 align="center" id="title">Studentų pažymių skaičiavimas</h1>
+
+<h2>Project Screenshots:</h2>
+
+<img src="https://postimg.cc/PC6xzw0g" alt="project-screenshot" width="500" height="500/">
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Download VSCode:</p>
+
+```
+https://code.visualstudio.com
+```
+
+<p>2. Download CMake and other needed programs:</p>
+
+```
+https://cmake.org/download/
+```
+
+```
+TDM-GCC 64+32 BIT: https://jmeubank.github.io/tdm-gcc/articles/2021-05/10.3.0-release
+```
+
+```
+NINJA-BUILD: https://github.com/ninja-build/ninja/releases/v1.12.0
+```
+
+<p>5. Setup:</p>
+
+```
+Install CMake.exe file. (MAKE SURE TO ADD PATH TO ALL USERS)
+```
+
+```
+Insert ninja into this directorty: C:\Program Files\CMake\bin
+```
+
+```
+Run TDM-GCC.
+```
+
+```
+CREATE -> MinGW -w64/TDM64 (32-BIT AND 64-BIT)
+```
+
+```
+Instalation directory: C:\TDM-GCC-64
+```
+
+```
+Complete the instalation.
+```
+
+<p>11. Extensions in VSCode:</p>
+
+```
+CMake Tools
+```
+
+```
+C/C++ Extension Pack
+```
+
+<p>13. DONE</p>
 
 Execution time - kiek laiko užtruko sugeneruoti faila x.
 File x sorting execution time - laikas kiek užtruko atidaryti faila ir surušiuoti
