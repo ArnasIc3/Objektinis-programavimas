@@ -1,5 +1,4 @@
-# Objektinis-programavimas
-ISI 1 k., 1-1, Arnas Martinkus
+<p3>ISI 1 k., 1-1, Arnas Martinkus </p3>
 <h1 align="center" id="title">Studentų pažymių skaičiavimas</h1>
 
 <h2>Project Screenshots:</h2>
